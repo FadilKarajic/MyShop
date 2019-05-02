@@ -8,9 +8,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyShop.Core.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }
+        
         [StringLength(25)]
         [DisplayName("Product Name")]
         public string Name { get; set; }
@@ -22,10 +22,6 @@ namespace MyShop.Core.Models
         public string Image { get; set; }
 
 
-        //Set own product Id
-        public Product()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
+        
     }
 }
