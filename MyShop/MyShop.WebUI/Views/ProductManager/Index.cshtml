@@ -11,9 +11,7 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-
-        </th>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -26,7 +24,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Category)
         </th>
-        
         <th></th>
     </tr>
 
@@ -47,11 +44,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Category)
         </td>
-        
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-
-            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

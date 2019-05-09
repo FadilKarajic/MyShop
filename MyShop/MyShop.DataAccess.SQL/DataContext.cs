@@ -1,20 +1,20 @@
-﻿using System;
+﻿using MyShop.Core.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using MyShop.Core.Models;
 
 namespace MyShop.DataAccess.SQL
 {
-    public class DataContext :DbContext
+    public class DataContext : DbContext
     {
         public DataContext()
-            : base("DefaultConnection")
-        {
+            : base("DefaultConnection") {
 
         }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Basket> Baskets { get; set; }

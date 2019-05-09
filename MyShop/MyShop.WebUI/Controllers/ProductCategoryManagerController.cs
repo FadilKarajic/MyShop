@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using MyShop.DataAccess.InMemory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MyShop.Core.Models;
-using MyShop.DataAccess.InMemory;
-using MyShop.Core.Contracts;
 
 namespace MyShop.WebUI.Controllers
 {
@@ -111,6 +111,7 @@ namespace MyShop.WebUI.Controllers
             else
             {
                 context.Delete(Id);
+                context.Commit();
                 return RedirectToAction("Index");
             }
         }

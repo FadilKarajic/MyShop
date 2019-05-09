@@ -1,29 +1,25 @@
-﻿using System;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
-using MyShop.Core.Models;
-using MyShop.Core.Contracts;
 
 namespace MyShop.DataAccess.InMemory
 {
-    //Placeholder can be "anything"
-    public class InMemoryRepository<Anything> : IRepository<Anything> where Anything:BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
-        List<Anything> items;
+        List<T> items;
         string className;
 
-
-        public InMemoryRepository()
-        {
-            className = typeof(Anything).Name;
-            items = cache[className] as List<Anything>;
-            if (items == null)
-            {
-                items=new List<Anything>();
+        public InMemoryRepository() {
+            className = typeof(T).Name;
+            items = cache[className] as List<T>;
+            if (items == null) {
+                items = new List<T>();
             }
         }
 
@@ -32,57 +28,49 @@ namespace MyShop.DataAccess.InMemory
             cache[className] = items;
         }
 
-       
-        public void Insert(Anything a)
-        {
-            items.Add(a);
+        public void Insert(T t) {
+            items.Add(t);
         }
 
-        public void Update(Anything a)
-        {
-            Anything toUpdate = items.Find(i => i.Id == a.Id);
-            if (toUpdate != null)
+        public void Update(T t) {
+            T tToUpdate = items.Find(i => i.Id == t.Id);
+
+            if (tToUpdate != null)
             {
-                toUpdate = a;
+                tToUpdate = t;
+            }
+            else {
+                throw new Exception(className + " Not found");
+            }
+        }
+
+        public T Find(string Id) {
+            T t = items.Find(i => i.Id == Id);
+            if (t != null) {
+                return t;
             }
             else
             {
-                throw new Exception(className+"Not found");
+                throw new Exception(className + " Not found");
             }
         }
 
-        public Anything Find(string Id)
-        {
-            Anything a = items.Find(i => i.Id == Id);
-            if (a != null)
-            {
-                return a;
-            }
-            else
-
-            {
-                throw new Exception(className + "Not found");
-            }
-        }
-
-        public IQueryable<Anything> Collection()
-        {
+        public IQueryable<T> Collection() {
             return items.AsQueryable();
         }
 
-        public void Delete(string Id)
-        {
-            Anything toDelete  = items.Find(i => i.Id == Id);
-            if (toDelete != null)
+        public void Delete(string Id) {
+            T tToDelete = items.Find(i => i.Id == Id);
+
+            if (tToDelete != null)
             {
-                items.Remove(toDelete);
+                items.Remove(tToDelete);
             }
             else
-
             {
-                throw new Exception(className + "Not found");
+                throw new Exception(className + " Not found");
             }
-
         }
+
     }
 }

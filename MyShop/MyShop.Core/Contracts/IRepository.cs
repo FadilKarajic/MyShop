@@ -3,13 +3,13 @@ using MyShop.Core.Models;
 
 namespace MyShop.Core.Contracts
 {
-    public interface IRepository<Anything> where Anything : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
-        IQueryable<Anything> Collection();
+        IQueryable<T> Collection();
         void Commit();
         void Delete(string Id);
-        Anything Find(string Id);
-        void Insert(Anything a);
-        void Update(Anything a);
+        T Find(string Id);
+        void Insert(T t);
+        void Update(T t);
     }
 }

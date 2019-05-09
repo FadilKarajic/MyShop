@@ -195,7 +195,9 @@ namespace MyShop.WebUI.Controllers
         }
 
         //
-        // GET: /Manage/RemovePhoneNumber
+        // POST: /Manage/RemovePhoneNumber
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
         {
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);

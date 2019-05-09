@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC442486-F45E-4F63-860B-AC8B030512A7}</ProjectGuid>
+    <ProjectGuid>{3A4704F8-042D-4450-A79A-AA096ED4F5CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyShop.DataAccess.SQL</RootNamespace>
@@ -32,11 +32,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -50,13 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\201905030145465_InitialMigration.cs" />
-    <Compile Include="Migrations\201905030145465_InitialMigration.Designer.cs">
-      <DependentUpon>201905030145465_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201711071327340_Initial.cs" />
+    <Compile Include="Migrations\201711071327340_Initial.Designer.cs">
+      <DependentUpon>201711071327340_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905080149085_AddBasket.cs" />
-    <Compile Include="Migrations\201905080149085_AddBasket.Designer.cs">
-      <DependentUpon>201905080149085_AddBasket.cs</DependentUpon>
+    <Compile Include="Migrations\201711091321341_AddBasket.cs" />
+    <Compile Include="Migrations\201711091321341_AddBasket.Designer.cs">
+      <DependentUpon>201711091321341_AddBasket.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,24 +66,17 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyShop.Core\MyShop.Core.csproj">
-      <Project>{8fdf35b7-bad1-49ec-8e32-55568864e70a}</Project>
+      <Project>{9B029460-6F4E-46AE-9B88-08C5FE08C0A4}</Project>
       <Name>MyShop.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905030145465_InitialMigration.resx">
-      <DependentUpon>201905030145465_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711071327340_Initial.resx">
+      <DependentUpon>201711071327340_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905080149085_AddBasket.resx">
-      <DependentUpon>201905080149085_AddBasket.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711091321341_AddBasket.resx">
+      <DependentUpon>201711091321341_AddBasket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
