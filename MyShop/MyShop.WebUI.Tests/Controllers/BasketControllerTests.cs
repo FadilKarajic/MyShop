@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyShop.Core.Contracts;
 using MyShop.Core.Models;
 using MyShop.WebUI.Tests.Mocks;
 using MyShop.Services;
-using MyShop.Core.Contracts;
 using System.Linq;
 using MyShop.WebUI.Controllers;
 using System.Web.Mvc;
@@ -42,8 +42,7 @@ namespace MyShop.WebUI.Tests.Controllers
         }
 
         [TestMethod]
-        public void CanGetSummaryViewModel()
-        {
+        public void CanGetSummaryViewModel() {
             IRepository<Basket> baskets = new MockContext<Basket>();
             IRepository<Product> products = new MockContext<Product>();
 
