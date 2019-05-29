@@ -1,2 +1,3 @@
 # MyShop
-MyShop project
+Practicing and learning .NET MVC development.
+
